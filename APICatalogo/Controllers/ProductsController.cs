@@ -37,7 +37,18 @@ namespace APICatalogo.Controllers
             return product;
         }
 
+        [HttpPost]
+        public ActionResult Post(Product product)
+        {
+            if (product == null)
+            {
+                return BadRequest();
+            }
 
+            _context.Products.Add(product);
+            _context.SaveChanges();
 
+            return CreatedAtAction(nameof(Get), new { id = product.ProductId }, product);
+        }
     }
 }
