@@ -22,7 +22,7 @@
 
 > Recursos e funcionalidades à serem adicionados.
 
-- [X] ~~~GET / POST / PUT / DELETE~~~
+- [x] ~~GET / POST / PUT / DELETE~~
 - [ ] Implementação de testes unitários
 - [ ] Frontend básico para consumo da API
 - [ ] CI with Github Actions
