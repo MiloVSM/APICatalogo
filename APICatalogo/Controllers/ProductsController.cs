@@ -1,6 +1,7 @@
 ﻿using APICatalogo.Context;
 using APICatalogo.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace APICatalogo.Controllers
 {
@@ -49,6 +50,20 @@ namespace APICatalogo.Controllers
             _context.SaveChanges();
 
             return CreatedAtAction(nameof(Get), new { id = product.ProductId }, product);
+        }
+
+        [HttpPut("{id:int}")]
+        public ActionResult Put(int id, Product product)
+        {
+            if (id != product.ProductId)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(product).State = EntityState.Modified;
+            _context.SaveChanges();
+
+            return Ok(product);
         }
     }
 }
