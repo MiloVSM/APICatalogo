@@ -43,22 +43,27 @@ namespace APICatalogo.Controllers
         {
             if (product == null)
             {
-                return BadRequest();
+                return BadRequest();   
             }
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
             _context.Products.Add(product);
-            _context.SaveChanges();
+            _context.SaveChanges(); 
 
             return CreatedAtAction(nameof(Get), new { id = product.ProductId }, product);
         }
 
         [HttpPut("{id:int}")]
-        public ActionResult Put(int id, Product product)
+        public ActionResult Put(int id, Product newProduct)
         {
-            if (id != product.ProductId)
+            var product = _context.Products.FirstOrDefault(p => p.ProductId == id);
+            if (product is null)
             {
-                return BadRequest();
+                return BadRequest("Product was not found... Check Product Id");
             }
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
             _context.Entry(product).State = EntityState.Modified;
             _context.SaveChanges();
