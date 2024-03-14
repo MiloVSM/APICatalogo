@@ -3,7 +3,7 @@
 
 ## Introduction
 
-> O objetivo principal deste projeto  *improve my skills with ASP.NET Core and his tools and integrations*.
+> O objetivo principal deste projeto  *aprimorar minhas habilidades ASP.NET Core e suas ferramentas*.
 
 ## Tech Stack
 
